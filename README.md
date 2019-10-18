@@ -7,7 +7,7 @@ const nameDragAndDrop = dragAndDrop<string, { name: string }>();
     Hello
 </nameDragAndDrop.TypedDroppable>
 
-<nameDragAndDrop.Draggable type="name" data="a name">
+<nameDragAndDrop.TypedDraggable type="name" data="a name">
     Drag me
-</nameDragAndDrop.Draggable>
+</nameDragAndDrop.TypedDraggable>
 ```

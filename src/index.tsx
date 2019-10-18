@@ -12,7 +12,6 @@ type TypedDroppable<T, V> = {
 };
 
 type DroppableProps<T, V> = {
-  type: StringKeyTypes<T>,
   onDrop: (obj: IndexedValue<T, V>) => void
 };
 
@@ -21,7 +20,6 @@ type DroppablePropsWithChildren<T, V>  = {
 } & DroppableProps<T, V>
 
 type DraggableProps<T, V> = {
-  type: StringKeyTypes<T>,
   data: V
 }
 
@@ -29,14 +27,14 @@ type DraggablePropsWithChildren<T, V>  = {
   children?: React.ReactNode
 } & DraggableProps<T, V>;
 
-export function dragAndDrop<V, T extends IndexedValue<T, V>>(): TypedDroppable<T, V> {
+export function dragAndDrop<V, T extends IndexedValue<T, V>>(type: StringKeyTypes<T>): TypedDroppable<T, V> {
   return {
-    Draggable: ({ children, type, data }: DraggablePropsWithChildren<T, V>): React.ReactElement<any> => (
+    Draggable: ({ children, data }: DraggablePropsWithChildren<T, V>): React.ReactElement<any> => (
         <Draggable type={type} data={data}>
           {children}
         </Draggable>
     ),
-    Droppable: ({children, type, onDrop}: DroppablePropsWithChildren<T, V>): React.ReactElement<any> => (
+    Droppable: ({children, onDrop}: DroppablePropsWithChildren<T, V>): React.ReactElement<any> => (
         <Droppable types={[type]} onDrop={onDrop}>
           {children}
         </Droppable>

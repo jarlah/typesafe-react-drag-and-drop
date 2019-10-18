@@ -1,6 +1,10 @@
 # typesafe-react-drag-and-drop
 
+to be published in npm soon.
+
 ```
+import { dragAndDrop } from "typesafe-react-drag-and-drop";
+
 const nameDragAndDrop = dragAndDrop<string, { name: string }>();
 
 <nameDragAndDrop.TypedDroppable type="name" onDrop={(obj: { name: string }) => null}>

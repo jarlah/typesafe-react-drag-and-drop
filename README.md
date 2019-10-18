@@ -1,6 +1,6 @@
 # typesafe-react-drag-and-drop
 
-to be published in npm soon.
+[![NPM](https://nodei.co/npm/typesafe-react-drag-and-drop.png?compact=true)](https://npmjs.org/package/typesafe-react-drag-and-drop)
 
 ```
 import { dragAndDrop } from "typesafe-react-drag-and-drop";

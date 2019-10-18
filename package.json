@@ -1,0 +1,55 @@
+{
+  "name": "typesafe-react-drag-and-drop",
+  "version": "2.0.8",
+  "description": "A small typesafe wrapper for react-drag-and-drop",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.tsx\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarlah/typesafe-react-drag-and-drop.git"
+  },
+  "keywords": [
+    "typesafe",
+    "action",
+    "creator",
+    "redux",
+    "react",
+    "hooks"
+  ],
+  "author": "Jarl André Hübenthal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jarlah/typesafe-react-drag-and-drop/issues"
+  },
+  "homepage": "https://github.com/jarlah/typesafe-react-drag-and-drop#readme",
+  "devDependencies": {
+    "@testing-library/dom": "^6.8.0",
+    "@testing-library/react": "^9.3.0",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^12.11.1",
+    "@types/react": "^16.9.7",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-drag-and-drop": "^3.0.0",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.6.4"
+  }
+}

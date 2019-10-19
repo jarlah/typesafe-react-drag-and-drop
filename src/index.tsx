@@ -39,8 +39,11 @@ const createDroppable = <T, V>(type: StringKeyTypes<T>) => ({
   const onDropCb = (e: DragEvent) => {
     e.preventDefault();
     if (e.dataTransfer) {
-      const obj = JSON.parse(e.dataTransfer.getData(type));
-      onDrop(obj as IndexedValue<T, V>);
+      const allowed = e.dataTransfer.types.indexOf(type) > -1;
+      if (allowed) {
+        const obj = JSON.parse(e.dataTransfer.getData(type));
+        onDrop(obj as IndexedValue<T, V>);
+      }
     }
   };
 

@@ -40,7 +40,7 @@ const createDroppable = <T, V>(type: StringKeyTypes<T>) => ({
     e.preventDefault();
     if (e.dataTransfer) {
       const obj = JSON.parse(e.dataTransfer.getData('source'));
-      onDrop(obj);
+      onDrop({ [type]: obj } as IndexedValue<T, V>);
     }
   };
 

@@ -5,7 +5,7 @@ type StringKeyTypes<T> = Extract<keyof T, string>;
 
 type IndexedValue<T, V> = { [key in StringKeyTypes<T>]: V };
 
-type TypedDroppable<T, V> = {
+type DragAndDrop<T, V> = {
   Droppable: React.FunctionComponent<DroppableProps<T, V>>;
   Draggable: React.FunctionComponent<DraggableProps<T, V>>;
 };
@@ -86,7 +86,7 @@ const createDraggable = <T, V>(type: StringKeyTypes<T>) => ({
   return <div ref={dragRef}>{children}</div>;
 };
 
-export function dragAndDrop<V, T extends IndexedValue<T, V>>(type: StringKeyTypes<T>): TypedDroppable<T, V> {
+export function dragAndDrop<V, T extends IndexedValue<T, V>>(type: StringKeyTypes<T>): DragAndDrop<T, V> {
   return {
     Draggable: createDraggable(type),
     Droppable: createDroppable(type),

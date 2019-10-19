@@ -3,12 +3,12 @@ import * as React from 'react';
 import { dragAndDrop as dnd } from '../index';
 
 test('dragAndDrop is rendering', async () => {
-  const dragAndDrop = dnd<string, { name: string }>('name');
+  const dragAndDrop = dnd<string>('name');
   const Component = () => {
     return (
       <>
         <dragAndDrop.Droppable
-          onDrop={(obj: { name: string }) => {
+          onDrop={(name: string) => {
             // do something
           }}
         >

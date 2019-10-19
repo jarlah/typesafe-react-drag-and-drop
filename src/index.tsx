@@ -1,35 +1,25 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 
-type StringKeyTypes<T> = Extract<keyof T, string>;
-
-type IndexedValue<T, V> = { [key in StringKeyTypes<T>]: V };
-
-type DragAndDrop<T, V> = {
-  Droppable: React.FunctionComponent<DroppableProps<T, V>>;
-  Draggable: React.FunctionComponent<DraggableProps<T, V>>;
+type DragAndDrop<V> = {
+  Droppable: React.FunctionComponent<DroppableProps<V>>;
+  Draggable: React.FunctionComponent<DraggableProps<V>>;
 };
 
-type DroppableProps<T, V> = {
-  onDrop: (obj: IndexedValue<T, V>) => void;
-};
-
-type DroppablePropsWithChildren<T, V> = {
+type DroppableProps<V> = {
+  onDrop: (obj: V) => void;
   children?: React.ReactNode;
-} & DroppableProps<T, V>;
+};
 
-type DraggableProps<T, V> = {
+type DraggableProps<V> = {
   data: V;
+  children?: React.ReactNode;
 };
 
-type DraggablePropsWithChildren<T, V> = {
-  children?: React.ReactNode;
-} & DraggableProps<T, V>;
-
-const createDroppable = <T, V>(type: StringKeyTypes<T>) => ({
+const createDroppable = <V extends any>(type: string) => ({
   children,
   onDrop,
-}: DroppablePropsWithChildren<T, V>): React.ReactElement<any> => {
+}: DroppableProps<V>): React.ReactElement<any> => {
   const dropRef = useRef<HTMLDivElement>(null);
 
   const dropOverCb = (e: DragEvent) => {
@@ -42,7 +32,7 @@ const createDroppable = <T, V>(type: StringKeyTypes<T>) => ({
       const allowed = e.dataTransfer.types.indexOf(type) > -1;
       if (allowed) {
         const obj = JSON.parse(e.dataTransfer.getData(type));
-        onDrop(obj as IndexedValue<T, V>);
+        onDrop(obj as V);
       }
     }
   };
@@ -62,15 +52,15 @@ const createDroppable = <T, V>(type: StringKeyTypes<T>) => ({
   return <div ref={dropRef}>{children}</div>;
 };
 
-const createDraggable = <T, V>(type: StringKeyTypes<T>) => ({
+const createDraggable = <V extends any>(type: string) => ({
   children,
   data,
-}: DraggablePropsWithChildren<T, V>): React.ReactElement<any> => {
+}: DraggableProps<V>): React.ReactElement<any> => {
   const dragRef = useRef<HTMLDivElement>(null);
 
   const dragStartCb = (e: DragEvent) => {
     if (e.dataTransfer) {
-      const json = JSON.stringify({ [type]: data });
+      const json = JSON.stringify(data);
       e.dataTransfer.setData(type, json);
     }
   };
@@ -89,7 +79,7 @@ const createDraggable = <T, V>(type: StringKeyTypes<T>) => ({
   return <div ref={dragRef}>{children}</div>;
 };
 
-export function dragAndDrop<V, T extends IndexedValue<T, V>>(type: StringKeyTypes<T>): DragAndDrop<T, V> {
+export function dragAndDrop<V>(type: string): DragAndDrop<V> {
   return {
     Draggable: createDraggable(type),
     Droppable: createDroppable(type),

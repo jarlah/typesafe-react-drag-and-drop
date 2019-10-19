@@ -7,11 +7,11 @@ type Person = {
 }
 
 const App: React.FC = () => {
-  const nameDrop = dragAndDrop<Person, { person: Person }>("person");
+  const nameDrop = dragAndDrop<Person>("person");
   return (
     <>
-      <nameDrop.Droppable onDrop={(obj: { person: Person}) => {
-        alert(`Hello, ${obj.person.name} are ${obj.person.age} years old`);
+      <nameDrop.Droppable onDrop={(person: Person) => {
+        alert(`Hello, ${person.name} are ${person.age} years old`);
       }}>
         Drop here
       </nameDrop.Droppable>

@@ -19,7 +19,7 @@ type DraggableProps<V> = {
 const createDroppable = <V extends any>(type: string) => ({
   children,
   onDrop,
-}: DroppableProps<V>): React.ReactElement<any> => {
+}: DroppableProps<V>) => {
   const dropRef = useRef<HTMLDivElement>(null);
 
   const dropOverCb = (e: DragEvent) => {
@@ -55,7 +55,7 @@ const createDroppable = <V extends any>(type: string) => ({
 const createDraggable = <V extends any>(type: string) => ({
   children,
   data,
-}: DraggableProps<V>): React.ReactElement<any> => {
+}: DraggableProps<V>) => {
   const dragRef = useRef<HTMLDivElement>(null);
 
   const dragStartCb = (e: DragEvent) => {

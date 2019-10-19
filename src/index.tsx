@@ -66,6 +66,9 @@ const createDraggable = <T, V>(type: StringKeyTypes<T>) => ({ children, data }: 
     if (elem) {
       elem.setAttribute("draggable", "true");
       elem.addEventListener("dragstart", dragStartCb);
+      return () => {
+          elem.removeEventListener("dragstart", dragStartCb);
+      }
     }
   });
 

@@ -5,9 +5,9 @@
 ```
 import { dragAndDrop } from "typesafe-react-drag-and-drop";
 
-const nameDragAndDrop = dragAndDrop<string, { name: string }>("name");
+const nameDragAndDrop = dragAndDrop<string>("name");
 
-<nameDragAndDrop.Droppable onDrop={(obj: { name: string }) => null}>
+<nameDragAndDrop.Droppable onDrop={(name: string) => null}>
     Hello
 </nameDragAndDrop.Droppable>
 

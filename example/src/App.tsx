@@ -7,18 +7,18 @@ type Person = {
 }
 
 const App: React.FC = () => {
-  const nameDrop = dragAndDrop<Person>("person");
+  const personDnD = dragAndDrop<Person>("person");
   return (
     <>
-      <nameDrop.Droppable onDrop={(person: Person) => {
+      <personDnD.Droppable onDrop={(person: Person) => {
         alert(`Hello, ${person.name} are ${person.age} years old`);
       }}>
         Drop here
-      </nameDrop.Droppable>
+      </personDnD.Droppable>
 
-      <nameDrop.Draggable data={{ name: "you", age: 100 }}>
+      <personDnD.Draggable data={{ name: "you", age: 100 }}>
         Drag me
-      </nameDrop.Draggable>
+      </personDnD.Draggable>
     </>
   );
 };

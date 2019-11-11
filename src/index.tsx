@@ -16,10 +16,7 @@ type DraggableProps<V> = {
   children?: React.ReactNode;
 };
 
-const createDroppable = <V extends any>(type: string) => ({
-  children,
-  onDrop,
-}: DroppableProps<V>) => {
+const createDroppable = <V extends any>(type: string) => ({ children, onDrop }: DroppableProps<V>) => {
   const dropRef = useRef<HTMLDivElement>(null);
 
   const dropOverCb = (e: DragEvent) => {
@@ -52,10 +49,7 @@ const createDroppable = <V extends any>(type: string) => ({
   return <div ref={dropRef}>{children}</div>;
 };
 
-const createDraggable = <V extends any>(type: string) => ({
-  children,
-  data,
-}: DraggableProps<V>) => {
+const createDraggable = <V extends any>(type: string) => ({ children, data }: DraggableProps<V>) => {
   const dragRef = useRef<HTMLDivElement>(null);
 
   const dragStartCb = (e: DragEvent) => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 
-type DragAndDrop<V> = {
+export type DragAndDrop<V> = {
   Droppable: React.FunctionComponent<DroppableProps<V>>;
   Draggable: React.FunctionComponent<DraggableProps<V>>;
 };

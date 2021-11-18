@@ -1,4 +1,7 @@
-import { render, waitForElement } from '@testing-library/react';
+/**
+ * @jest-environment jsdom
+ */
+import { render, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { dragAndDrop as dnd } from '../index';
 
@@ -21,6 +24,6 @@ test('dragAndDrop is rendering', async () => {
 
   const { getByText } = render(<Component />);
 
-  await waitForElement(() => getByText('Drop here'));
-  await waitForElement(() => getByText('Drag this'));
+  await waitFor(() => getByText('Drop here'));
+  await waitFor(() => getByText('Drag this'));
 });

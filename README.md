@@ -5,13 +5,13 @@
 ```
 import { dragAndDrop } from "typesafe-react-drag-and-drop";
 
-const nameDragAndDrop = dragAndDrop<string>("name");
+const name = dragAndDrop<string>("name");
 
-<nameDragAndDrop.Droppable onDrop={(name: string) => null}>
+<name.Droppable onDrop={(name: string) => null}>
     Hello
-</nameDragAndDrop.Droppable>
+</name.Droppable>
 
-<nameDragAndDrop.Draggable data="a name">
+<name.Draggable data="a name">
     Drag me
-</nameDragAndDrop.Draggable>
+</name.Draggable>
 ```

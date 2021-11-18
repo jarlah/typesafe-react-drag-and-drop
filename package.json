@@ -1,6 +1,6 @@
 {
   "name": "typesafe-react-drag-and-drop",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A small typesafe wrapper for react-drag-and-drop",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -50,5 +50,8 @@
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.5.2"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
   }
 }

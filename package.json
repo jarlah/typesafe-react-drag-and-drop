@@ -1,6 +1,6 @@
 {
   "name": "typesafe-react-drag-and-drop",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A small typesafe wrapper for react-drag-and-drop",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
